@@ -70,3 +70,10 @@ This schema can be re-used for facets.
 **Related**:
 
 - [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview) - as soon as you define schema you can view database
+
+### Markdown files as database
+
+- [Obsidian Dataview](https://github.com/blacksmithgu/obsidian-dataview)
+- [markdown-to-sqlite](https://github.com/simonw/markdown-to-sqlite)
+- [Using sqlite3 as a notekeeping document graph with automatic reference indexing](https://epilys.github.io/bibliothecula/notekeeping.html)
+- [docsql](https://github.com/peterbe/docsql)
