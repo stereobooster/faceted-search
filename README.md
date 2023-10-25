@@ -48,7 +48,7 @@ Most of them are implemented with Rust
 
 ### Prebuild index for static websites
 
-Typical solution for search for static websites, like Hugo, is to load data as JSON in memory and then index it. Is there a way to build index upfront and fetch it from server with [HTTP range request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests)? It can be optimized for reads format, like [Parquet](https://github.com/kylebarron/parquet-wasm).
+Typical solution for search for static websites, like Hugo, is to load data as JSON in memory and then index it. Is there a way to build index upfront and fetch it from the server with [HTTP range request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests)? It can be optimized for reads format, like [Parquet](https://github.com/kylebarron/parquet-wasm).
 
 ### Benchmark
 
@@ -57,3 +57,16 @@ https://nextapps-de.github.io/flexsearch/bench/
 ### Web Workers
 
 Use [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) for client side indexing.
+
+### Collection schema
+
+There is a trend, which I would call "collection schema", for example:
+
+- [Astro](https://docs.astro.build/en/guides/content-collections/#defining-a-collection-schema)
+- [contentlayer](https://contentlayer.dev/)
+
+This schema can be re-used for facets.
+
+**Related**:
+
+- [Drizzle Studio](https://orm.drizzle.team/drizzle-studio/overview) - as soon as you define schema you can view database
