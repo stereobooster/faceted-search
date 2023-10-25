@@ -2,6 +2,14 @@
 
 Some experiments with faceted search.
 
+## TODO
+
+- build a demo
+  - take any open source database (maybe from Kaggle)
+  - take any frontend faceted search (only frontend for now)
+  - take any UI library and probably Vite
+- host on Netlify
+
 ## UI components
 
 - [instantsearch](https://github.com/algolia/instantsearch) React, Vue, Angular
@@ -11,15 +19,6 @@ Some experiments with faceted search.
 - [coveo/search-ui](https://github.com/coveo/search-ui) Plain JS
 - [sajari/search-ui](https://github.com/sajari/sdk-react/tree/master/packages/search-ui) React
 - [Flowbite: Tailwind CSS Faceted Search Drawers](https://flowbite.com/blocks/application/faceted-search-drawers/)
-
-## Server
-
-Most of them are implemented with Rust
-
-- [meilisearch](https://www.meilisearch.com/docs/learn/fine_tuning_results/faceted_search)
-- [typesense](https://typesense.org/docs/0.24.1/api/search.html#facet-results)
-- [tantivy](https://github.com/quickwit-oss/tantivy)
-  - There is [an attempt to compile it to WASM](https://github.com/phiresky/tantivy-wasm)
 
 ## Client
 
@@ -40,9 +39,19 @@ Most of them are implemented with Rust
 
 ### Fuzzy autocomplete
 
+- [uFuzzy](https://github.com/leeoniya/uFuzzy)
 - [radix-trie](https://github.com/scttdavs/radix-trie#fuzzyget)
 - [symspell](https://yomguithereal.github.io/mnemonist/symspell)
 - [fzf-for-js](https://github.com/ajitid/fzf-for-js)
+
+## Server
+
+I'm mainly interested in frontend solution, but I leave it here for the reference
+
+- [meilisearch](https://www.meilisearch.com/docs/learn/fine_tuning_results/faceted_search)
+- [typesense](https://typesense.org/docs/0.24.1/api/search.html#facet-results)
+- [tantivy](https://github.com/quickwit-oss/tantivy)
+  - There is [an attempt to compile it to WASM](https://github.com/phiresky/tantivy-wasm)
 
 ## Ideas
 
@@ -50,9 +59,14 @@ Most of them are implemented with Rust
 
 Typical solution for search for static websites, like Hugo, is to load data as JSON in memory and then index it. Is there a way to build index upfront and fetch it from the server with [HTTP range request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests)? It can be optimized for reads format, like [Parquet](https://github.com/kylebarron/parquet-wasm).
 
+[stork](https://github.com/jameslittle230/stork) (deprecated) has CLI for building index and JS library to consume it.
+
 ### Benchmark
 
-https://nextapps-de.github.io/flexsearch/bench/
+- https://nextapps-de.github.io/flexsearch/bench/
+- https://github.com/leeoniya/uFuzzy#a-biased-appraisal-of-similar-work
+- https://github.com/tinysearch/tinysearch/issues/136
+- https://github.com/oramasearch/orama/issues/76
 
 ### Web Workers
 
