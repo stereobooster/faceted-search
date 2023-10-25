@@ -5,9 +5,9 @@ Some experiments with faceted search.
 ## TODO
 
 - build a demo
-  - take any open source database (maybe from Kaggle)
+  - take any open source database
     - https://github.com/algolia/datasets/tree/master/ecommerce
-    - https://github.com/topics/movies-dataset
+    - https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
   - take any frontend faceted search (only frontend for now)
   - take any UI library and probably Vite
 - host on Netlify
@@ -15,6 +15,9 @@ Some experiments with faceted search.
 ## UI components
 
 - [instantsearch](https://github.com/algolia/instantsearch) React, Vue, Angular
+  - [typesense-instantsearch-adapter](https://github.com/typesense/typesense-instantsearch-adapter)
+  - [searchkit-instantsearch-client](https://github.com/searchkit/searchkit/blob/main/packages/searchkit-instantsearch-client/src/index.ts)
+  - [instant-meilisearch](https://github.com/meilisearch/meilisearch-js-plugins/tree/main/packages/instant-meilisearch)
 - [searchkit](https://github.com/searchkit/searchkit) Plain JS, React, Vue, Angular
 - [reactivesearch](https://github.com/appbaseio/reactivesearch#3-component-playground) React, Vue
 - [AddSearch/search-ui](https://github.com/AddSearch/search-ui) Plain JS
@@ -94,3 +97,11 @@ This schema can be re-used for facets.
 - [markdown-to-sqlite](https://github.com/simonw/markdown-to-sqlite)
 - [Using sqlite3 as a notekeeping document graph with automatic reference indexing](https://epilys.github.io/bibliothecula/notekeeping.html)
 - [docsql](https://github.com/peterbe/docsql)
+
+### Astro integration
+
+- [orama](https://docs.oramasearch.com/plugins/plugin-astro)
+- [pagefind](https://github.com/shishkin/astro-pagefind)
+- [fuse](https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse)
+- [lunr](https://github.com/jackcarey/astro-lunr)
+- [minisearch](https://github.com/Barnabas/astro-minisearch/)
