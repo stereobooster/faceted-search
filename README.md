@@ -6,6 +6,7 @@ Some experiments with faceted search.
 
 - build a demo
   - take any open source database (maybe from Kaggle)
+    - https://github.com/topics/movies-dataset
   - take any frontend faceted search (only frontend for now)
   - take any UI library and probably Vite
 - host on Netlify
@@ -52,6 +53,7 @@ I'm mainly interested in frontend solution, but I leave it here for the referenc
 - [typesense](https://typesense.org/docs/0.24.1/api/search.html#facet-results)
 - [tantivy](https://github.com/quickwit-oss/tantivy)
   - There is [an attempt to compile it to WASM](https://github.com/phiresky/tantivy-wasm)
+  - [bayard](https://github.com/mosuka/bayard)
 
 ## Ideas
 
