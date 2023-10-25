@@ -9,7 +9,14 @@ Some experiments with faceted search.
     - https://github.com/algolia/datasets/tree/master/ecommerce
     - https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
   - take any frontend faceted search (only frontend for now)
-  - take any UI library and probably Vite
+  - take any UI library or build from scratch
+    - [search input, items list, sorting, pagination](/screenshots/search-ui.png)
+    - faceted filter components
+      - [range](/screenshots/range-filter.png)
+      - [cateogries](/screenshots/category-filter.png)
+    - filter components
+      - boolean (checkbox or switch)
+      - [date range](https://react-dates.github.io/react-dates/?path=/story/drp-day-props--with-some-highlighted-dates)
 - host on Netlify
 
 ## UI components
@@ -66,6 +73,8 @@ I'm mainly interested in frontend solution, but I leave it here for the referenc
 Typical solution for search for static websites, like Hugo, is to load data as JSON in memory and then index it. Is there a way to build index upfront and fetch it from the server with [HTTP range request](https://developer.mozilla.org/en-US/docs/Web/HTTP/Range_requests)? It can be optimized for reads format, like [Parquet](https://github.com/kylebarron/parquet-wasm).
 
 [stork](https://github.com/jameslittle230/stork) (deprecated) has CLI for building index and JS library to consume it.
+
+[orama/plugin-data-persistence](https://github.com/oramasearch/orama/tree/main/packages/plugin-data-persistence) can store index data as JSON or as [dpack](https://www.npmjs.com/package/dpack), but not sure if stores raw data or index.
 
 ### Benchmark
 
