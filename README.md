@@ -6,6 +6,7 @@ Some experiments with faceted search.
 
 - build a demo
   - take any open source database (maybe from Kaggle)
+    - https://github.com/algolia/datasets/tree/master/ecommerce
     - https://github.com/topics/movies-dataset
   - take any frontend faceted search (only frontend for now)
   - take any UI library and probably Vite
