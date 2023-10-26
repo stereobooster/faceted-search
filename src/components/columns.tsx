@@ -1,39 +1,55 @@
 import { ColumnDef } from "@tanstack/react-table";
 
-import { Task } from "../data/schema";
+import { Product } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
 
-export const columns: ColumnDef<Task>[] = [
+export const columnsProduct: ColumnDef<Product>[] = [
   {
-    accessorKey: "id",
+    accessorKey: "name",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Task" />
-    ),
-    enableSorting: false,
-    enableHiding: false,
-  },
-  {
-    accessorKey: "title",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader column={column} title="Name" />
     ),
   },
   {
-    accessorKey: "status",
+    accessorKey: "shortDescription",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" />
+      <DataTableColumnHeader column={column} title="Description" />
     ),
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    },
   },
   {
-    accessorKey: "priority",
+    accessorKey: "bestSellingRank",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Priority" />
+      <DataTableColumnHeader column={column} title="Rank" />
     ),
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id));
-    },
   },
+  {
+    accessorKey: "salePrice",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Price" />
+    ),
+  },
+  {
+    accessorKey: "manufacturer",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Manufacturer" />
+    ),
+  },
+  {
+    accessorKey: "type",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Type" />
+    ),
+  },
+  {
+    accessorKey: "categories",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Categories" />
+    ),
+  },  
+  // thumbnailImage: z.string(),
+  // url: z.string(),
+  // image: z.string(),
+  // objectID: z.string(),
+  // shipping: z.string(),
+  // customerReviewCount: z.number(),
 ];
