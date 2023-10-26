@@ -22,16 +22,16 @@ const useData = () => {
           }).filter(Boolean)
         );
       });
-  });
+  }, []);
 
   return data;
 };
 
-export default function TaskPage() {
+export default function App() {
   const data = useData();
 
   return (
-    <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+    <div className="flex-1 flex-col space-y-8 p-8 md:flex">
       <DataTable data={data} columns={columnsProduct} />
     </div>
   );

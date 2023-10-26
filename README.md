@@ -8,12 +8,15 @@ Some experiments with faceted search.
   - [x] take any open source dataset
     - https://github.com/algolia/datasets/tree/master/ecommerce
     - https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
-  - [ ] try tanstack/table for ecomerce dataset
+  - [ ] try tanstack/table for ecommerce dataset
     - [x] add scheme
     - [x] fetch data
-    - [ ] fix facet filter and pagination
+    - [x] fix facet filter and pagination
     - [ ] search by more than one column
-    - facets in [sidebar](https://ui.shadcn.com/examples/music)
+    - [ ] facets in [sidebar](https://ui.shadcn.com/examples/music)
+    - [ ] try to use orama with table
+      - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
+      - https://www.material-react-table.com/docs/examples/react-query
     - [try other library instead of zod](https://stereobooster.com/posts/runtime-type-validators/)
   - take any frontend faceted search (only frontend for now)
   - take any UI library or build from scratch
@@ -129,9 +132,3 @@ This schema can be re-used for facets.
 
 - [Scatterplot Matrix (SPLOM)](https://plotly.com/javascript/splom/)
 - [Range Slider](https://plotly.com/javascript/range-slider/)
-
-### Table
-
-- tanstack/table + orama ?
-  - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
-  - https://www.material-react-table.com/docs/examples/react-query

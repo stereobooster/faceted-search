@@ -33,18 +33,27 @@ export const columnsProduct: ColumnDef<Product>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Manufacturer" />
     ),
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
   },
   {
     accessorKey: "type",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Type" />
     ),
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
   },
   {
     accessorKey: "categories",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Categories" />
     ),
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    },
   },  
   // thumbnailImage: z.string(),
   // url: z.string(),

@@ -61,8 +61,6 @@ export function DataTable<TData, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
-  const rows = table.getRowModel().rows;
-
   return (
     <div className="space-y-4">
       <DataTableToolbar table={table} />
@@ -87,8 +85,8 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {rows?.length ? (
-              rows.map((row) => (
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
