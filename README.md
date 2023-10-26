@@ -5,9 +5,10 @@ Some experiments with faceted search.
 ## TODO
 
 - build a demo
-  - take any open source dataset
+  - [x] take any open source dataset
     - https://github.com/algolia/datasets/tree/master/ecommerce
     - https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
+  - [ ] try tanstack/table for ecomerce dataset
   - take any frontend faceted search (only frontend for now)
   - take any UI library or build from scratch
     - [search input, items list, sorting, pagination](/screenshots/search-ui.png)
@@ -40,6 +41,7 @@ Some experiments with faceted search.
   - [FastBitSet.js](https://github.com/lemire/FastBitSet.js/) is the secret sauce
     - Same author has other libraries worth to try [roaring-wasm](https://github.com/lemire/roaring-wasm), [TypedFastBitSet](https://github.com/lemire/TypedFastBitSet.js)
 - [orama](https://docs.oramasearch.com/usage/search/facets)
+- [tanstack/table](https://tanstack.com/table/v8/docs/api/features/filters#getfacetedrowmodel)
 
 ### Full-text search
 
@@ -121,3 +123,9 @@ This schema can be re-used for facets.
 
 - [Scatterplot Matrix (SPLOM)](https://plotly.com/javascript/splom/)
 - [Range Slider](https://plotly.com/javascript/range-slider/)
+
+### Table
+
+- tanstack/table + orama ?
+  - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
+  - https://www.material-react-table.com/docs/examples/react-query
