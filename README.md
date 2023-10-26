@@ -9,6 +9,10 @@ Some experiments with faceted search.
     - https://github.com/algolia/datasets/tree/master/ecommerce
     - https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
   - [ ] try tanstack/table for ecomerce dataset
+    - add scheme
+    - fetch data
+    - facets in [sidebar](https://ui.shadcn.com/examples/music)
+    - [try other library instead of zod](https://stereobooster.com/posts/runtime-type-validators/)
   - take any frontend faceted search (only frontend for now)
   - take any UI library or build from scratch
     - [search input, items list, sorting, pagination](/screenshots/search-ui.png)
