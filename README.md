@@ -5,7 +5,7 @@ Some experiments with faceted search.
 ## TODO
 
 - build a demo
-  - take any open source database
+  - take any open source dataset
     - https://github.com/algolia/datasets/tree/master/ecommerce
     - https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
   - take any frontend faceted search (only frontend for now)
@@ -65,6 +65,8 @@ I'm mainly interested in frontend solution, but I leave it here for the referenc
 - [tantivy](https://github.com/quickwit-oss/tantivy)
   - There is [an attempt to compile it to WASM](https://github.com/phiresky/tantivy-wasm)
   - [bayard](https://github.com/mosuka/bayard)
+- DuckDB, I guess, because it has [Full Text Search](https://duckdb.org/docs/extensions/full_text_search.html) and [GROUPING SETS](https://duckdb.org/docs/sql/query_syntax/grouping_sets)
+  - there is [WASM version](https://duckdb.org/docs/api/wasm/overview.html), but it is kind of big
 
 ## Ideas
 
@@ -114,3 +116,8 @@ This schema can be re-used for facets.
 - [fuse](https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse)
 - [lunr](https://github.com/jackcarey/astro-lunr)
 - [minisearch](https://github.com/Barnabas/astro-minisearch/)
+
+### Ploting
+
+- [Scatterplot Matrix (SPLOM)](https://plotly.com/javascript/splom/)
+- [Range Slider](https://plotly.com/javascript/range-slider/)
