@@ -12,8 +12,8 @@ Some experiments with faceted search.
     - [x] add scheme
     - [x] fetch data
     - [x] fix facet filter and pagination
-    - [ ] search by more than one column
     - [ ] facets in [sidebar](https://ui.shadcn.com/examples/music)
+    - [ ] search by more than one column
     - [ ] try to use orama with table
       - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
       - https://www.material-react-table.com/docs/examples/react-query
@@ -132,3 +132,12 @@ This schema can be re-used for facets.
 
 - [Scatterplot Matrix (SPLOM)](https://plotly.com/javascript/splom/)
 - [Range Slider](https://plotly.com/javascript/range-slider/)
+
+### Examples
+
+- https://analysis-tools.dev/tools
+  - https://github.com/analysis-tools-dev/static-analysis/tree/master/data/tools
+- https://docs.datasette.io/en/stable/facets.html
+- https://software.llnl.gov/
+- https://softwareunderground.github.io/open_geosciene_code_projects_viz/explore/
+

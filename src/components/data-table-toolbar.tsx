@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { DataTableViewOptions } from "./data-table-view-options"
 
-import { DataTableFacetedFilter } from "./data-table-faceted-filter"
-
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
 }
@@ -27,18 +25,6 @@ export function DataTableToolbar<TData>({
           }
           className="h-8 w-[150px] lg:w-[250px]"
         />
-        {table.getColumn("manufacturer") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("manufacturer")}
-            title="Manufacturer"
-          />
-        )}
-        {table.getColumn("type") && (
-          <DataTableFacetedFilter
-            column={table.getColumn("type")}
-            title="Type"
-          />
-        )}
         {isFiltered && (
           <Button
             variant="ghost"
