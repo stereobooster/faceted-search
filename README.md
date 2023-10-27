@@ -12,7 +12,7 @@ Some experiments with faceted search.
     - [x] add scheme
     - [x] fetch data
     - [x] fix facet filter and pagination
-    - [ ] facets in [sidebar](https://ui.shadcn.com/examples/music)
+    - [x] facets in sidebar
     - [ ] search by more than one column
     - [ ] try to use orama with table
       - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js

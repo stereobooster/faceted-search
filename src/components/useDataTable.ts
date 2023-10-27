@@ -10,6 +10,7 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  getFacetedMinMaxValues,
   useReactTable,
 } from "@tanstack/react-table";
 
@@ -22,7 +23,16 @@ export const useDataTable = <TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    name: true,
+    shortDescription: true,
+    salePrice: true,
+    bestSellingRank: false,
+    manufacturer: false,
+    type: false,
+    salePrice_range: false,
+    categories: false,
+  });
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -43,5 +53,6 @@ export const useDataTable = <TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+    getFacetedMinMaxValues: getFacetedMinMaxValues(),
   });
 };

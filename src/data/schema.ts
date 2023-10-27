@@ -3,8 +3,8 @@ import { z } from "zod";
 export const productSchema = z.object({
   name: z.string(),
   shortDescription: z.string(),
-  bestSellingRank: z.number(),
   salePrice: z.number(),
+  bestSellingRank: z.number(),
   manufacturer: z.string(),
   type: z.string(),
   salePrice_range: z.string(),

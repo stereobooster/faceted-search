@@ -34,7 +34,7 @@ export const columnsProduct: ColumnDef<Product>[] = [
       <DataTableColumnHeader column={column} title="Manufacturer" />
     ),
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      return value.includes(row.getValue(id));
     },
   },
   {
@@ -43,7 +43,7 @@ export const columnsProduct: ColumnDef<Product>[] = [
       <DataTableColumnHeader column={column} title="Type" />
     ),
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      return value.includes(row.getValue(id));
     },
   },
   {
@@ -52,9 +52,12 @@ export const columnsProduct: ColumnDef<Product>[] = [
       <DataTableColumnHeader column={column} title="Categories" />
     ),
     filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
+      const rowValue = row.getValue(id) as string[];
+      if (value.length === 0 || rowValue.length === 0) return false;
+      return rowValue.some((x) => value.includes(x));
     },
-  },  
+    getUniqueValues: (rowData) => rowData["categories"],
+  },
   // thumbnailImage: z.string(),
   // url: z.string(),
   // image: z.string(),
