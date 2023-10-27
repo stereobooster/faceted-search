@@ -6,8 +6,6 @@ interface FacetedFilterSliderProps<TData, TValue> {
   title?: string;
 }
 
-// TODO: need to add marks https://github.com/radix-ui/primitives/issues/1188
-// TODO: nedd to prohibit marks crossing
 export function FacetedFilterSlider<TData, TValue>({
   column,
 }: FacetedFilterSliderProps<TData, TValue>) {

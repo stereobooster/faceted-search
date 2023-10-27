@@ -21,9 +21,6 @@ export function FacetedFilterCheckboxes<TData, TValue>({
   column,
   title,
 }: FacetedFilterCheckboxesProps<TData, TValue>) {
-  // TODO: update counts and list
-  // TODO: render only to 20 items
-  // TODO: for string[] unique values return duplicates
   // const facets = useMemo(
   //   () =>
   //     [...(column?.getFacetedUniqueValues().entries() || [])].sort(
@@ -39,7 +36,7 @@ export function FacetedFilterCheckboxes<TData, TValue>({
   return (
     <Command>
       {facets.length > 5 && <CommandInput placeholder={title} />}
-      <CommandList>
+      <CommandList className="max-h-[130px] px-1">
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
           {facets.map(([option, count]) => {

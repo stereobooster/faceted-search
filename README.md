@@ -4,29 +4,46 @@ Some experiments with faceted search.
 
 ## TODO
 
+There is simplest demo build with `tanstack/table` and some example datset:
+
+- https://github.com/algolia/datasets/tree/master/ecommerce
+- https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
+
+But there are issues:
+
+- `FacetedFilterCheckboxes`
+  - options should be sorted by popularity
+  - it probably makes sense to limit initial list of options to 10-20
+  - I think `Command` is not appropriate for `FacetedFilterCheckboxes`
+  - works with `OR` semantics. Do I need filter with `AND` semantics?
+- `FacetedFilterSlider`
+  - I need to [add marks (numbers) to slider](https://github.com/radix-ui/primitives/issues/1188)
+    - [maybe just add tooltip with number over slider](https://slawomir-zaziablo.github.io/range-slider/)
+  - I need to add small graph with items distribution
+- there is latency on key input and memory consumption is about 96mb
+- filters should be [collapsible](https://ui.shadcn.com/docs/components/accordion)
+- separate UI for sorting instead of table headers
+- alternative display - grid instead of table
+- store filters state in URL
+
+Alternatives:
+
+- `tanstack/table`
+  - [ ] **I can try to use `orama` for search and faceting**
+    - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
+    - https://www.material-react-table.com/docs/examples/react-query
+  - I can try to move data processing in Web Worker
+    - there still can be latency in processing, but at least there will be no latency in keyboard input
+
+TODO:
+
 - build a demo
-  - [x] take any open source dataset
-    - https://github.com/algolia/datasets/tree/master/ecommerce
-    - https://github.com/searchkit/searchkit/tree/main/sample-data/electronics-ecommerce
-  - [ ] try tanstack/table for ecommerce dataset
-    - [x] add scheme
-    - [x] fetch data
-    - [x] fix facet filter and pagination
-    - [x] facets in sidebar
-    - [ ] search by more than one column
-    - [ ] try to use orama with table
-      - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
-      - https://www.material-react-table.com/docs/examples/react-query
-    - [try other library instead of zod](https://stereobooster.com/posts/runtime-type-validators/)
-  - take any frontend faceted search (only frontend for now)
-  - take any UI library or build from scratch
-    - [search input, items list, sorting, pagination](/screenshots/search-ui.png)
-    - faceted filter components
-      - [range](/screenshots/range-filter.png)
-      - [cateogries](/screenshots/category-filter.png)
-    - filter components
-      - boolean (checkbox or switch)
-      - [date range](https://react-dates.github.io/react-dates/?path=/story/drp-day-props--with-some-highlighted-dates)
+  - faceted filter components
+    - [range](/screenshots/range-filter.png)
+    - [cateogries](/screenshots/category-filter.png)
+  - filter components
+    - boolean (checkbox or switch)
+    - [date range](https://react-dates.github.io/react-dates/?path=/story/drp-day-props--with-some-highlighted-dates)
 - host on Netlify
 
 ## UI components
@@ -140,4 +157,3 @@ This schema can be re-used for facets.
 - https://docs.datasette.io/en/stable/facets.html
 - https://software.llnl.gov/
 - https://softwareunderground.github.io/open_geosciene_code_projects_viz/explore/
-
