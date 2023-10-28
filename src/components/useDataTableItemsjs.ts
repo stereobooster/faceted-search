@@ -10,7 +10,11 @@ import {
   Table,
 } from "@tanstack/react-table";
 import ItemsJS from "itemsjs";
-import { Product } from "@/data/schema";
+import {
+  defaultVisibilityFilter,
+  itemsJsFacets,
+  searchFields,
+} from "@/data/schema";
 
 interface DataTableProps<TData, TValue> {
   data: TData[];
@@ -21,16 +25,9 @@ export const useDataTableItemsjs = <TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
-    name: true,
-    shortDescription: true,
-    salePrice: true,
-    bestSellingRank: false,
-    manufacturer: false,
-    type: false,
-    salePrice_range: false,
-    categories: false,
-  });
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
+    defaultVisibilityFilter
+  );
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
@@ -63,28 +60,8 @@ export const useDataTableItemsjs = <TData, TValue>({
     () =>
       // @ts-expect-error type signature is wrong
       ItemsJS(data, {
-        searchableFields: ["name", "shortDescription", "manufacturer"],
-        aggregations: {
-          manufacturer: {
-            title: "Manufacturer",
-            size: 10,
-            conjunction: false,
-          },
-          type: {
-            title: "Type",
-            size: 10,
-            conjunction: false,
-          },
-          salePrice: {
-            title: "Price",
-            show_facet_stats: true,
-          },
-          categories: {
-            title: "Categories",
-            size: 10,
-            conjunction: false,
-          },
-        },
+        searchableFields: searchFields,
+        aggregations: itemsJsFacets,
       }),
     [data]
   );
@@ -92,7 +69,7 @@ export const useDataTableItemsjs = <TData, TValue>({
   const result = useMemo(
     () =>
       itemsjs.search({
-        query: term,
+        query: term.length < 2 ? "" : term,
         filters: where,
         sort: sortBy,
         page: pagination.pageIndex + 1,
@@ -108,14 +85,13 @@ export const useDataTableItemsjs = <TData, TValue>({
     // do nothing
   }
 
-  const dataNew = useMemo(() => result.data.items || [], [result]) as Product[];
+  const dataNew = useMemo(() => result.data.items || [], [result]) as TData[];
   const count = result?.pagination.total;
   const pageCount =
     count !== undefined ? Math.ceil(count / pagination.pageSize) : -1;
 
   return useReactTable({
     data: dataNew,
-    // @ts-expect-error xxx
     columns,
     state: {
       sorting,

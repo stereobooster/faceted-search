@@ -13,6 +13,7 @@ import {
   getFacetedMinMaxValues,
   useReactTable,
 } from "@tanstack/react-table";
+import { defaultVisibilityFilter } from "@/data/schema";
 
 interface DataTableProps<TData, TValue> {
   data: TData[];
@@ -23,16 +24,7 @@ export const useDataTable = <TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
-    name: true,
-    shortDescription: true,
-    salePrice: true,
-    bestSellingRank: false,
-    manufacturer: false,
-    type: false,
-    salePrice_range: false,
-    categories: false,
-  });
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(defaultVisibilityFilter);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
 

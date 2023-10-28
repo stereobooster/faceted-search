@@ -1,5 +1,4 @@
 import { ColumnDef } from "@tanstack/react-table";
-
 import { Product } from "../data/schema";
 import { DataTableColumnHeader } from "./data-table-column-header";
 
@@ -17,15 +16,15 @@ export const columnsProduct: ColumnDef<Product>[] = [
     ),
   },
   {
-    accessorKey: "bestSellingRank",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Rank" />
-    ),
-  },
-  {
     accessorKey: "salePrice",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Price" />
+    ),
+  },
+  {
+    accessorKey: "bestSellingRank",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Rank" />
     ),
   },
   {
@@ -58,10 +57,4 @@ export const columnsProduct: ColumnDef<Product>[] = [
     },
     getUniqueValues: (rowData) => rowData["categories"],
   },
-  // thumbnailImage: z.string(),
-  // url: z.string(),
-  // image: z.string(),
-  // objectID: z.string(),
-  // shipping: z.string(),
-  // customerReviewCount: z.number(),
 ];

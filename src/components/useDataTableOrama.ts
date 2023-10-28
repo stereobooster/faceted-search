@@ -12,7 +12,7 @@ import {
   Table,
 } from "@tanstack/react-table";
 import { useSearch } from "./useSearch";
-import { Product } from "@/data/schema";
+import { Product, defaultVisibilityFilter } from "@/data/schema";
 import { Orama, SorterParams } from "@orama/orama";
 
 interface DataTableProps {
@@ -27,16 +27,7 @@ const options = {
 };
 
 export const useDataTableOrama = ({ columns }: DataTableProps) => {
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
-    name: true,
-    shortDescription: true,
-    salePrice: true,
-    bestSellingRank: false,
-    manufacturer: false,
-    type: false,
-    salePrice_range: false,
-    categories: false,
-  });
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(defaultVisibilityFilter);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState<PaginationState>({

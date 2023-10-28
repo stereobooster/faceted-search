@@ -57,6 +57,7 @@ Uncaught (in promise) TypeError: replacement is undefined
 - [ ] **Can try to integrate different full-text search engine**, I think, by default it uses Lunr. For example, pagefind or flexisearch
 - `Command` filter should should be able to fetch more options
 - TypeScript signature are wrong (`extends {}`)
+- When there is one letter search it return empty result
 
 ### Option 4: instantsearch + itemsjs
 
@@ -66,8 +67,7 @@ Maybe...
 
 - build equivalent demo for all 3 approaches
   - router and links
-  - use same number of items (1000)
-  - refactor loader function and load only relevant fields and refactor types/schemas
+    - https://vitejs.dev/guide/build.html#multi-page-app
   - host on Netlify
   - clean up readme and publish
 - write article
@@ -142,6 +142,8 @@ Typical solution for search for static websites, like Hugo, is to load data as J
 [stork](https://github.com/jameslittle230/stork) (deprecated) has CLI for building index and JS library to consume it.
 
 [orama/plugin-data-persistence](https://github.com/oramasearch/orama/tree/main/packages/plugin-data-persistence) can store index data as JSON or as [dpack](https://www.npmjs.com/package/dpack), but not sure if stores raw data or index.
+
+[Pagefind](https://pagefind.app/docs/running-pagefind/) has CLI for building index and JS library to consume it.
 
 ### Benchmark
 
