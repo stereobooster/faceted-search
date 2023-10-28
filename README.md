@@ -54,7 +54,7 @@ Uncaught (in promise) TypeError: replacement is undefined
 
 - So far the best impression of all tried libraries. Memory footprint similar to Orama
 - [ ] **Can move it to web worker**
-- [ ] **Can try to integrate different full-text search engine**, I think, by default it uses Lunr. For example, pagefind or flexisearch
+- [ ] **Can try to integrate different full-text search engine**, I think, by default it uses Lunr. For example, flexsearch or fuse
 - `Command` filter should should be able to fetch more options
 - TypeScript signature are wrong (`extends {}`)
 - When there is one letter search it return empty result
@@ -66,8 +66,6 @@ Maybe...
 ### TODO
 
 - build equivalent demo for all 3 approaches
-  - router and links
-    - https://vitejs.dev/guide/build.html#multi-page-app
   - host on Netlify
   - clean up readme and publish
 - write article
@@ -110,13 +108,13 @@ Maybe...
 
 - [orama](https://github.com/oramasearch/orama)
 - [pagefind](https://github.com/cloudcannon/pagefind)
-- [fuse](https://github.com/krisk/fuse)
 - [lunr.js](https://github.com/olivernn/lunr.js)
 - [flexsearch](https://github.com/nextapps-de/flexsearch)
 
 ### Fuzzy autocomplete
 
 - [uFuzzy](https://github.com/leeoniya/uFuzzy)
+- [fuse](https://github.com/krisk/fuse)
 - [radix-trie](https://github.com/scttdavs/radix-trie#fuzzyget)
 - [symspell](https://yomguithereal.github.io/mnemonist/symspell)
 - [fzf-for-js](https://github.com/ajitid/fzf-for-js)

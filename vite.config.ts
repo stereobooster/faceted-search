@@ -9,4 +9,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        tanstack: path.resolve(__dirname, 'src/pages/tanstack/index.html'),
+        orama: path.resolve(__dirname, 'src/pages/orama/index.html'),
+        itemsjs: path.resolve(__dirname, 'src/pages/itemsjs/index.html'),
+      },
+    },
+  },
 })

@@ -6,7 +6,7 @@ import {
   oramaFacets,
   oramaSchema,
   searchFields,
-} from "./data/schema";
+} from "@/data/schema";
 import {
   SearchParams,
   TypedDocument,

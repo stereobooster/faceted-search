@@ -1,26 +1,64 @@
-import { columnsProduct } from "@/components/columns";
-import { DataTable } from "@/components/data-table";
-import { Sidebar } from "@/components/sidebar";
-
-import { useDataTableItemsjs } from "./components/useDataTableItemsjs";
-import { useData } from "./components/useData";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 
 export default function App() {
-  const data = useData();
-  const table = useDataTableItemsjs({ data, columns: columnsProduct });
-
   return (
-    <div className="border-t">
-      <div className="bg-background">
-        <div className="grid lg:grid-cols-5">
-          <Sidebar table={table} />
-          <div className="col-span-3 lg:col-span-4 lg:border-l">
-            <div className="h-full px-4 py-6 lg:px-8">
-              <DataTable table={table} columns={columnsProduct} />
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="bg-background flex items-center justify-center h-screen">
+      <Card>
+        <CardHeader>
+          <CardTitle>Faceted search experiments</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p>
+            <a href="/pages/tanstack/" className="underline">
+              Tanstack
+            </a>
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Tanstack table with{" "}
+            <a
+              href="https://tanstack.com/table/v8/docs/api/features/filters#getfacetedrowmodel"
+              className="underline"
+            >
+              native faceting functionality
+            </a>
+          </p>
+          <Separator className="my-2" />
+          <p>
+            <a href="/pages/orama/" className="underline">
+              Orama
+            </a>
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Tanstack table with Orama{" "}
+            <a
+              href="https://docs.oramasearch.com/usage/search/introduction"
+              className="underline"
+            >
+              full text search
+            </a>{" "}
+            and{" "}
+            <a
+              href="https://docs.oramasearch.com/usage/search/facets"
+              className="underline"
+            >
+              faceting
+            </a>
+          </p>
+          <Separator className="my-2" />
+          <p>
+            <a href="/pages/itemsjs/" className="underline">
+              ItemsJS
+            </a>
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Tanstack table with{" "}
+            <a href="https://github.com/itemsapi/itemsjs" className="underline">
+              ItemsJS for faceting
+            </a>
+          </p>
+        </CardContent>
+      </Card>
     </div>
   );
 }

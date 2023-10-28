@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { oramaWorker } from "../oramaWorkerInstance";
+import { oramaWorker } from "./oramaWorkerInstance";
 import { proxy } from "comlink";
-import { ResultsOramaWorker, SearchParamsOramaWorker } from "../oramaWorker";
+import { ResultsOramaWorker, SearchParamsOramaWorker } from "./oramaWorker";
 
 export const useSearch = ({
   term,
