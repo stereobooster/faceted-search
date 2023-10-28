@@ -32,9 +32,12 @@ export const ecomerceDB = await create({
   },
 });
 
-type ProgressCB = (x: number) => void;
+const pause = (t: number) => new Promise((resolve) => setTimeout(resolve, t));
 
-const batch = 50;
+type ProgressCB = (percentage: number, total: number) => void;
+
+const batch = 200;
+let total = 0;
 let loading = 0;
 let callback: ProgressCB | undefined;
 
@@ -57,8 +60,10 @@ const load = () => {
         if (tmp.length >= batch || i === data.length - 1) {
           // @ts-expect-error Orama ts signature is wrong
           await insertMultiple(ecomerceDB, tmp);
+          total += tmp.length;
           tmp = [];
-          if (callback) callback(i / (data.length - 1));
+          if (callback) callback(i / (data.length - 1), total);
+          await pause(50);
         }
       }
       loading = 2;
@@ -104,7 +109,6 @@ const api = {
     return search(ecomerceDB, {
       ...rest,
       properties: ["name", "shortDescription", "manufacturer"],
-      // where,
       facets: {
         manufacturer: {},
         type: {},

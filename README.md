@@ -38,6 +38,8 @@ function getFacetedUniqueValues() {
   return (table, columnId) => ()
 ```
 
+- Loading data in orama is teribly slow I need to try [orama/plugin-data-persistence](https://github.com/oramasearch/orama/tree/main/packages/plugin-data-persistence)
+
 TODO:
 
 - build a demo

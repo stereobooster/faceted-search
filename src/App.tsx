@@ -18,8 +18,10 @@ const useSearch = ({
       if (res) return;
 
       oramaWorker.onLoadProgress(
-        proxy((x) => {
-          console.log(x);
+        proxy((percentage, total) => {
+          console.log(percentage, total);
+          if (counter.current > 1) return;
+
           counter.current += 1;
           oramaWorker
             .search({ term, where, signalId: counter.current })
@@ -29,7 +31,7 @@ const useSearch = ({
         })
       );
     });
-  }, [term, where]);
+  }, []);
 
   useEffect(() => {
     counter.current += 1;
