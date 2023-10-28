@@ -52,7 +52,15 @@ Uncaught (in promise) TypeError: replacement is undefined
 
 ### Option 3: Tanstack table + itemsjs
 
-- **integrate `itemsjs`**
+- So far the best impression of all tried libraries. Memory footprint similar to Orama
+- [ ] **Can move it to web worker**
+- [ ] **Can try to integrate different full-text search engine**, I think, by default it uses Lunr
+- `Command` filter should should be able to fetch more options
+- TypeScript signature are wrong (`extends {}`)
+
+### Option 4: instantsearch + itemsjs
+
+Maybe...
 
 ### TODO
 
