@@ -54,7 +54,7 @@ Uncaught (in promise) TypeError: replacement is undefined
 
 - So far the best impression of all tried libraries. Memory footprint similar to Orama
 - [ ] **Can move it to web worker**
-- [ ] **Can try to integrate different full-text search engine**, I think, by default it uses Lunr
+- [ ] **Can try to integrate different full-text search engine**, I think, by default it uses Lunr. For example, pagefind or flexisearch
 - `Command` filter should should be able to fetch more options
 - TypeScript signature are wrong (`extends {}`)
 
@@ -64,14 +64,23 @@ Maybe...
 
 ### TODO
 
-- build a demo
-  - faceted filter components
-    - [range](/screenshots/range-filter.png)
-    - [cateogries](/screenshots/category-filter.png)
-  - filter components
-    - boolean (checkbox or switch)
-    - [date range](https://react-dates.github.io/react-dates/?path=/story/drp-day-props--with-some-highlighted-dates)
-- host on Netlify
+- build equivalent demo for all 3 approaches
+  - router and links
+  - use same number of items (1000)
+  - refactor loader function and load only relevant fields and refactor types/schemas
+  - host on Netlify
+  - clean up readme and publish
+- write article
+  - about faceted search
+    - examples with screenshots and links
+    - ploting libraries examples
+    - about backend servers and UI libraries
+    - about faceted filters and why they are different from general filters
+      - [range](/screenshots/range-filter.png)
+      - [cateogries](/screenshots/category-filter.png)
+      - [date range](https://react-dates.github.io/react-dates/?path=/story/drp-day-props--with-some-highlighted-dates)
+  - about frontend options
+    - 3 libraries
 
 ## UI components
 
@@ -145,6 +154,19 @@ Typical solution for search for static websites, like Hugo, is to load data as J
 
 Use [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers) for client side indexing.
 
+### Ploting
+
+- [Scatterplot Matrix (SPLOM)](https://plotly.com/javascript/splom/)
+- [Range Slider](https://plotly.com/javascript/range-slider/)
+
+### Examples
+
+- https://analysis-tools.dev/tools
+  - https://github.com/analysis-tools-dev/static-analysis/tree/master/data/tools
+- https://docs.datasette.io/en/stable/facets.html
+- https://software.llnl.gov/
+- https://softwareunderground.github.io/open_geosciene_code_projects_viz/explore/
+
 ### Collection schema
 
 There is a trend, which I would call "collection schema", for example:
@@ -168,20 +190,6 @@ This schema can be re-used for facets.
 ### Astro integration
 
 - [orama](https://docs.oramasearch.com/plugins/plugin-astro)
-- [pagefind](https://github.com/shishkin/astro-pagefind)
 - [fuse](https://github.com/johnny-mh/blog2/tree/main/packages/astro-fuse)
 - [lunr](https://github.com/jackcarey/astro-lunr)
 - [minisearch](https://github.com/Barnabas/astro-minisearch/)
-
-### Ploting
-
-- [Scatterplot Matrix (SPLOM)](https://plotly.com/javascript/splom/)
-- [Range Slider](https://plotly.com/javascript/range-slider/)
-
-### Examples
-
-- https://analysis-tools.dev/tools
-  - https://github.com/analysis-tools-dev/static-analysis/tree/master/data/tools
-- https://docs.datasette.io/en/stable/facets.html
-- https://software.llnl.gov/
-- https://softwareunderground.github.io/open_geosciene_code_projects_viz/explore/
