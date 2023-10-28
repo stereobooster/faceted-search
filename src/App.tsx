@@ -1,51 +1,97 @@
-import { useEffect, useState } from "react";
-import { columnsProduct } from "@/components/columns";
-import { DataTable } from "@/components/data-table";
-import { Sidebar } from "@/components/sidebar";
-import { Product, productSchema } from "./data/schema";
-import { useDataTable } from "./components/useDataTable";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { oramaWorker } from "./oramaWorkerInstance";
+import { proxy } from "comlink";
+import { ResultsOramaWorker } from "./oramaWorker";
 
-const useData = () => {
-  const [data, setData] = useState([] as Product[]);
+const useSearch = ({
+  term,
+  where,
+}: {
+  term: string;
+  where: Record<string, string[]>;
+}) => {
+  const [results, setResults] = useState<ResultsOramaWorker | null>(null);
+  const counter = useRef(0);
+
   useEffect(() => {
-    fetch("/ecommerce/bestbuy_seo.json")
-      .then((res) => res.json())
-      .then((data) => {
-        if (!Array.isArray(data)) return;
-        setData(
-          // @ts-expect-error xxx
-          data
-            .map((x) => {
-              try {
-                return productSchema.parse(x);
-              } catch (e) {
-                return;
-              }
-            })
-            .filter(Boolean)
-        );
+    oramaWorker.load().then((res) => {
+      if (res) return;
+
+      oramaWorker.onLoadProgress(
+        proxy((x) => {
+          console.log(x);
+          counter.current += 1;
+          oramaWorker
+            .search({ term, where, signalId: counter.current })
+            .then(({ signalId, ...rest }) => {
+              if (signalId === counter.current) setResults(rest);
+            });
+        })
+      );
+    });
+  }, [term, where]);
+
+  useEffect(() => {
+    counter.current += 1;
+    oramaWorker
+      .search({ term, where, signalId: counter.current })
+      .then(({ signalId, ...rest }) => {
+        if (signalId === counter.current) setResults(rest);
       });
+  }, [term, where]);
+
+  useEffect(() => {
+    // @ts-expect-error Comlink can't handle optional params
+    oramaWorker.onLoadProgress();
+    counter.current = -1;
   }, []);
 
-  return data;
+  return results;
 };
 
-export default function App() {
-  const data = useData();
-  const table = useDataTable({ data, columns: columnsProduct });
+function App() {
+  const [term, setTerm] = useState("");
+  const [where, setWhere] = useState<Record<string, string[]>>({});
+  const results = useSearch({ term, where });
 
   return (
-    <div className="border-t">
-      <div className="bg-background">
-        <div className="grid lg:grid-cols-5">
-          <Sidebar table={table} />
-          <div className="col-span-3 lg:col-span-4 lg:border-l">
-            <div className="h-full px-4 py-6 lg:px-8">
-              <DataTable table={table} columns={columnsProduct} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <input value={term} onChange={(e) => setTerm(e.target.value)} />
+      <p>Results: {results?.count}</p>
+      {results && (
+        <>
+          {results.hits.map((hit) => (
+            <details key={hit.id}>
+              <summary>{hit.document.name}</summary>
+              {JSON.stringify(hit.document)}
+            </details>
+          ))}
+          {Object.keys(results.facets!).map((facetName) => {
+            const facet = results.facets![facetName].values;
+            return (
+              <details key={facetName}>
+                <summary>{facetName}</summary>
+                {Object.entries(facet).map(([k, v]) => (
+                  <Fragment key={k}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        onClick={() => {
+                          setWhere((x) => ({ ...x, [facetName]: [k] }));
+                        }}
+                      />{" "}
+                      {k} ({v})
+                    </label>
+                    <br />
+                  </Fragment>
+                ))}
+              </details>
+            );
+          })}
+        </>
+      )}
+    </>
   );
 }
+
+export default App;

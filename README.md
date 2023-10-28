@@ -32,8 +32,11 @@ Alternatives:
   - [ ] **I can try to use `orama` for search and faceting**
     - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
     - https://www.material-react-table.com/docs/examples/react-query
-  - I can try to move data processing in Web Worker
-    - there still can be latency in processing, but at least there will be no latency in keyboard input
+
+```js
+function getFacetedUniqueValues() {
+  return (table, columnId) => ()
+```
 
 TODO:
 
