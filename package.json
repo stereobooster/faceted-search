@@ -27,12 +27,14 @@
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
     "comlink": "^4.4.1",
+    "itemsjs": "^2.1.22",
     "lucide-react": "^0.289.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/itemsjs": "^2.1.5",
     "@types/node": "^20.8.6",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",

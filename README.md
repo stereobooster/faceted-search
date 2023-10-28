@@ -4,7 +4,7 @@ Some experiments with faceted search.
 
 ## TODO
 
-### Option 1
+### Option 1: Tanstack table native faceting
 
 There is simplest demo build with `tanstack/table` and some example datset:
 
@@ -28,7 +28,7 @@ But there are issues:
 - alternative display - grid instead of table
 - store filters state in URL
 
-### Option 2
+### Option 2: Tanstack table + Orama
 
 I implemented integration `tanstack/table` and Orama
 
@@ -50,7 +50,7 @@ Uncaught (in promise) TypeError: replacement is undefined
   sortBy sorter.ts:238
 ```
 
-### Option 3
+### Option 3: Tanstack table + itemsjs
 
 - **integrate `itemsjs`**
 
@@ -69,8 +69,9 @@ Uncaught (in promise) TypeError: replacement is undefined
 
 - [instantsearch](https://github.com/algolia/instantsearch) React, Vue, Angular
   - [typesense-instantsearch-adapter](https://github.com/typesense/typesense-instantsearch-adapter)
-  - [searchkit-instantsearch-client](https://github.com/searchkit/searchkit/blob/main/packages/searchkit-instantsearch-client/src/index.ts)
+  - [searchkit-instantsearch-client](https://github.com/searchkit/searchkit/blob/main/packages/searchkit-instantsearch-client)
   - [instant-meilisearch](https://github.com/meilisearch/meilisearch-js-plugins/tree/main/packages/instant-meilisearch)
+  - [instantsearch-itemsjs-adapter](https://github.com/unplatform-io/instantsearch-itemsjs-adapter)
 - [searchkit](https://github.com/searchkit/searchkit) Plain JS, React, Vue, Angular
 - [reactivesearch](https://github.com/appbaseio/reactivesearch#3-component-playground) React, Vue
 - [AddSearch/search-ui](https://github.com/AddSearch/search-ui) Plain JS

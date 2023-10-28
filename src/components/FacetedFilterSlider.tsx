@@ -10,7 +10,10 @@ interface FacetedFilterSliderProps<TData, TValue> {
 export function FacetedFilterSlider<TData, TValue>({
   column,
 }: FacetedFilterSliderProps<TData, TValue>) {
-  const facetsMemo = useMemo(() => column?.getFacetedMinMaxValues(), []);
+  const facetsMemo = useMemo(
+    () => column?.getFacetedMinMaxValues(),
+    [column?.getFacetedMinMaxValues()?.length]
+  );
   const facets = column?.getFacetedMinMaxValues();
   if (!facets || !facetsMemo) return;
 
