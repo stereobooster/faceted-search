@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -19,15 +19,10 @@ interface DataTableProps {
   columns: ColumnDef<Product>[];
 }
 
-const options = {
-  getCoreRowModel: getCoreRowModel(),
-  // TODO: replace those
-  getFacetedRowModel: getFacetedRowModel(),
-  getFacetedMinMaxValues: getFacetedMinMaxValues(),
-};
-
 export const useDataTableOrama = ({ columns }: DataTableProps) => {
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(defaultVisibilityFilter);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
+    defaultVisibilityFilter
+  );
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [sorting, setSorting] = useState<SortingState>([]);
   const [pagination, setPagination] = useState<PaginationState>({
@@ -67,9 +62,11 @@ export const useDataTableOrama = ({ columns }: DataTableProps) => {
     offset: pagination.pageIndex,
   });
   const resultRef = useRef(result);
-  useEffect(() => {
+  try {
     resultRef.current = result;
-  }, [result]);
+  } catch (e) {
+    // do nothing
+  }
   const data = useMemo(
     () => result?.hits?.map((x) => x.document) || [],
     [result]
@@ -80,7 +77,6 @@ export const useDataTableOrama = ({ columns }: DataTableProps) => {
 
   return useReactTable({
     data,
-    // @ts-expect-error xxx
     columns,
     state: {
       sorting,
@@ -94,12 +90,15 @@ export const useDataTableOrama = ({ columns }: DataTableProps) => {
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
-    ...options,
+    getCoreRowModel: getCoreRowModel(),
     getFacetedUniqueValues:
       <TData>(_table: Table<TData>, columnId: string) =>
       () =>
         new Map(
           Object.entries(resultRef.current?.facets![columnId]?.values || {})
         ),
+    // TODO: replace those
+    getFacetedRowModel: getFacetedRowModel(),
+    getFacetedMinMaxValues: getFacetedMinMaxValues(),
   });
 };

@@ -14,7 +14,7 @@ export const useSearch = ({
   const counter = useRef(0);
 
   useEffect(() => {
-    oramaWorker.load(1000).then((res) => {
+    oramaWorker.load().then((res) => {
       if (res) return;
 
       oramaWorker.onLoadProgress(
