@@ -4,6 +4,8 @@ Some experiments with faceted search.
 
 ## TODO
 
+### Option 1
+
 There is simplest demo build with `tanstack/table` and some example datset:
 
 - https://github.com/algolia/datasets/tree/master/ecommerce
@@ -26,21 +28,33 @@ But there are issues:
 - alternative display - grid instead of table
 - store filters state in URL
 
-Alternatives:
+### Option 2
 
-- `tanstack/table`
-  - [ ] **I can try to use `orama` for search and faceting**
-    - https://stackoverflow.com/questions/76889519/fetching-data-using-the-tanstack-table-in-next-js
-    - https://www.material-react-table.com/docs/examples/react-query
+I implemented integration `tanstack/table` and Orama
 
-```js
-function getFacetedUniqueValues() {
-  return (table, columnId) => ()
+But there are issues:
+
+- `Command` filter should refetch options or fetch all of them
+- `category` (`string[]`) doesn't sort options by frequency
+- there is no MinMax facet
+- when facet is selected, it removes options from the same facet, but instead it should remove only options from other facets
+- Loading data in Orama is teribly slow I need to try [orama/plugin-data-persistence](https://github.com/oramasearch/orama/tree/main/packages/plugin-data-persistence)
+  - for now limit results to 1000
+- ther is a bug in Orama, when search option is wrong
+
+```
+Uncaught (in promise) TypeError: replacement is undefined
+  sprintf utils.ts:65
+  sprintf utils.ts:41
+  createError errors.ts:47
+  sortBy sorter.ts:238
 ```
 
-- Loading data in orama is teribly slow I need to try [orama/plugin-data-persistence](https://github.com/oramasearch/orama/tree/main/packages/plugin-data-persistence)
+### Option 3
 
-TODO:
+- **integrate `itemsjs`**
+
+### TODO
 
 - build a demo
   - faceted filter components

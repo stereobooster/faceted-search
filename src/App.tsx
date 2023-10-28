@@ -1,49 +1,24 @@
-import { Fragment, useState } from "react";
-import { useSearch } from "./components/useSearch";
+import { columnsProduct } from "@/components/columns";
+import { DataTable } from "@/components/data-table";
+import { Sidebar } from "@/components/sidebar";
+import { useDataTableOrama } from "./components/useDataTableOrama";
 
-function App() {
-  const [term, setTerm] = useState("");
-  const [where, setWhere] = useState<Record<string, string[]>>({});
-  const results = useSearch({ term, where });
+export default function App() {
+  const table = useDataTableOrama({ columns: columnsProduct });
 
   return (
-    <>
-      <input value={term} onChange={(e) => setTerm(e.target.value)} />
-      <p>Results: {results?.count}</p>
-      {results && (
-        <>
-          {results.hits.map((hit) => (
-            <details key={hit.id}>
-              <summary>{hit.document.name}</summary>
-              {JSON.stringify(hit.document)}
-            </details>
-          ))}
-          {Object.keys(results.facets!).map((facetName) => {
-            const facet = results.facets![facetName].values;
-            return (
-              <details key={facetName}>
-                <summary>{facetName}</summary>
-                {Object.entries(facet).map(([k, v]) => (
-                  <Fragment key={k}>
-                    <label>
-                      <input
-                        type="checkbox"
-                        onClick={() => {
-                          setWhere((x) => ({ ...x, [facetName]: [k] }));
-                        }}
-                      />{" "}
-                      {k} ({v})
-                    </label>
-                    <br />
-                  </Fragment>
-                ))}
-              </details>
-            );
-          })}
-        </>
-      )}
-    </>
+    <div className="border-t">
+      <div className="bg-background">
+        <div className="grid lg:grid-cols-5">
+          <Sidebar table={table} />
+          <div className="col-span-3 lg:col-span-4 lg:border-l">
+            <div className="h-full px-4 py-6 lg:px-8">
+              {/* @ts-expect-error xxx */}
+              <DataTable table={table} columns={columnsProduct} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
-
-export default App;

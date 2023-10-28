@@ -1,5 +1,5 @@
 import { expose } from "comlink";
-import { productSchema } from "./data/schema";
+import { Product, productSchema } from "./data/schema";
 import {
   SearchParams,
   TypedDocument,
@@ -14,17 +14,7 @@ export const ecomerceDB = await create({
     name: "string",
     shortDescription: "string",
     bestSellingRank: "number",
-    thumbnailImage: "string",
     salePrice: "number",
-    url: "string",
-    image: "string",
-    objectID: "string",
-    shipping: "string",
-    customerReviewCount: "number",
-    // manufacturer: "enum",
-    // type: "enum",
-    // salePrice_range: "enum",
-    // categories: "enum[]",
     manufacturer: "string",
     type: "string",
     salePrice_range: "string",
@@ -41,7 +31,7 @@ let total = 0;
 let loading = 0;
 let callback: ProgressCB | undefined;
 
-const load = () => {
+const load = (limit = -1) => {
   if (loading > 0) return false;
   loading = 1;
 
@@ -50,19 +40,20 @@ const load = () => {
     .then(async (data: unknown[] | unknown) => {
       if (!Array.isArray(data)) return;
       let tmp = [];
-      for (let i = 0; i < data.length; i++) {
+      if (limit === -1) limit = data.length - 1;
+      for (let i = 0; i <= limit; i++) {
         try {
           const item = productSchema.parse(data[i]);
           tmp.push(item);
         } catch (e) {
           // do nothing
         }
-        if (tmp.length >= batch || i === data.length - 1) {
+        if (tmp.length >= batch || i === limit) {
           // @ts-expect-error Orama ts signature is wrong
           await insertMultiple(ecomerceDB, tmp);
           total += tmp.length;
           tmp = [];
-          if (callback) callback(i / (data.length - 1), total);
+          if (callback) callback(i / limit, total);
           await pause(50);
         }
       }
@@ -81,22 +72,7 @@ export type SearchParamsOramaWorker = SearchParams<
   signalId?: number;
 };
 
-export type ResultsOramaWorker = Results<{
-  name: string;
-  shortDescription: string;
-  bestSellingRank: string;
-  thumbnailImage: string;
-  salePrice: string;
-  url: string;
-  image: string;
-  objectID: string;
-  shipping: string;
-  customerReviewCount: string;
-  manufacturer: string;
-  type: string;
-  salePrice_range: string;
-  categories: string;
-}> & {
+export type ResultsOramaWorker = Results<Product> & {
   signalId?: number;
 };
 
