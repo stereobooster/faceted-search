@@ -14,13 +14,16 @@ import {
   create,
   insertMultiple,
   search,
+  Orama
 } from "@orama/orama";
 
-export const ecomerceDB = await create({
-  schema: oramaSchema,
+// Module format "iife" does not support top-level await. Use the "es" or "system" output formats rather.
+let ecomerceDB: Orama<typeof oramaSchema>;
+create({ schema: oramaSchema }).then((x) => {
+  ecomerceDB = x;
 });
 
-const pause = (t: number) => new Promise((resolve) => setTimeout(resolve, t));
+// const pause = (t: number) => new Promise((resolve) => setTimeout(resolve, t));
 
 type ProgressCB = (percentage: number, total: number) => void;
 
@@ -35,15 +38,15 @@ const load = (limit = defaultLimit) => {
 
   loadData(limit).then(async (data) => {
     let tmp = [];
-    for (let i = 0; i <= limit; i++) {
+    for (let i = 0; i < limit; i++) {
       tmp.push(data[i]);
-      if (tmp.length >= batch || i === limit) {
+      if (tmp.length >= batch || i === limit - 1) {
         // @ts-expect-error Orama TS signature is wrong
         await insertMultiple(ecomerceDB, tmp);
         total += tmp.length;
         tmp = [];
-        if (callback) callback(i / limit, total);
-        await pause(50);
+        if (callback) callback(i / (limit - 1), total);
+        // await pause(50);
       }
     }
     loading = 2;

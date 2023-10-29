@@ -13,10 +13,10 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        tanstack: path.resolve(__dirname, 'src/pages/tanstack/index.html'),
-        orama: path.resolve(__dirname, 'src/pages/orama/index.html'),
-        itemsjs: path.resolve(__dirname, 'src/pages/itemsjs/index.html'),
-      },
+        tanstack: path.resolve(__dirname, 'pages/tanstack/index.html'),
+        itemsjs: path.resolve(__dirname, 'pages/itemsjs/index.html'),
+        orama: path.resolve(__dirname, 'pages/orama/index.html'),
+      }
     },
   },
 })

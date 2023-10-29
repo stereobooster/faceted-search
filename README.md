@@ -55,6 +55,7 @@ Uncaught (in promise) TypeError: replacement is undefined
 - So far the best impression of all tried libraries. Memory footprint similar to Orama
 - [ ] **Can move it to web worker**
 - [ ] **Can try to integrate different full-text search engine**, I think, by default it uses Lunr. For example, flexsearch or fuse
+  - https://github.com/itemsapi/itemsjs/blob/master/docs/minisearch-integration.md
 - `Command` filter should should be able to fetch more options
 - TypeScript signature are wrong (`extends {}`)
 - When there is one letter search it return empty result

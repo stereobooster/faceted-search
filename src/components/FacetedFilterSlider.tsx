@@ -15,7 +15,7 @@ export function FacetedFilterSlider<TData, TValue>({
     [column?.getFacetedMinMaxValues()?.length]
   );
   const facets = column?.getFacetedMinMaxValues();
-  if (!facets || !facetsMemo) return;
+  if (!facets || !facetsMemo) return null;
 
   const [min, max] = facetsMemo;
   return (

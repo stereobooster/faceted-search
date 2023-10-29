@@ -20,7 +20,7 @@ export function Sidebar<TData>({ className, table }: SidebarProps<TData>) {
               Price
             </h2>
             <div className="space-y-1">
-              {length != 0 && (
+              {length !== 0 && (
                 <FacetedFilterSlider
                   column={table.getColumn("salePrice")}
                   title="Price"
@@ -35,7 +35,7 @@ export function Sidebar<TData>({ className, table }: SidebarProps<TData>) {
               Manufacturer
             </h2>
             <div className="space-y-1">
-              {length != 0 && (
+              {length !== 0 && (
                 <FacetedFilterCheckboxes
                   column={table.getColumn("manufacturer")}
                   title="Manufacturer"
@@ -50,7 +50,7 @@ export function Sidebar<TData>({ className, table }: SidebarProps<TData>) {
               Type
             </h2>
             <div className="space-y-1">
-              {length != 0 && (
+              {length !== 0 && (
                 <FacetedFilterCheckboxes
                   column={table.getColumn("type")}
                   title="Type"
