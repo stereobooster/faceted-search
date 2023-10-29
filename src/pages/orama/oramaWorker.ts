@@ -23,8 +23,6 @@ const ecomerceDBPromise = create({ schema: oramaSchema }).then((x) => {
   ecomerceDB = x;
 });
 
-// const pause = (t: number) => new Promise((resolve) => setTimeout(resolve, t));
-
 type ProgressCB = (percentage: number, total: number) => void;
 
 const batch = 200;
@@ -36,7 +34,7 @@ const load = (limit = defaultLimit) => {
   if (loading > 0) return false;
   loading = 1;
 
-  ecomerceDBPromise.then(() => {
+  return ecomerceDBPromise.then(() =>
     loadData(limit).then(async (data) => {
       let tmp = [];
       for (let i = 0; i < limit; i++) {
@@ -47,14 +45,13 @@ const load = (limit = defaultLimit) => {
           total += tmp.length;
           tmp = [];
           if (callback) callback(i / (limit - 1), total);
-          // await pause(50);
         }
       }
       loading = 2;
-    });
-  });
 
-  return true;
+      return true;
+    })
+  );
 };
 
 type EcomerceDB = typeof ecomerceDB;

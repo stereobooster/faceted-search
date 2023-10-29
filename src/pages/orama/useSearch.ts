@@ -14,23 +14,25 @@ export const useSearch = ({
   const counter = useRef(0);
 
   useEffect(() => {
-    oramaWorker.load().then((res) => {
-      if (res) return;
+    oramaWorker.load();
 
-      oramaWorker.onLoadProgress(
-        proxy((percentage, total) => {
-          console.log(percentage, total);
-          if (counter.current > 1) return;
+    oramaWorker.onLoadProgress(
+      proxy((percentage, total) => {
+        console.log(percentage, total);
+        if (counter.current > 1) return;
+        oramaWorker
+          .search({ term, where, signalId: -1 })
+          .then(({ signalId, ...rest }) => {
+            if (signalId === -1) setResults(rest);
+          });
+      })
+    );
 
-          counter.current += 1;
-          oramaWorker
-            .search({ term, where, signalId: counter.current })
-            .then(({ signalId, ...rest }) => {
-              if (signalId === counter.current) setResults(rest);
-            });
-        })
-      );
-    });
+    return () => {
+      // @ts-expect-error Comlink TS signature doesn't support optional params
+      oramaWorker.onLoadProgress();
+      counter.current = -1;
+    };
   }, []);
 
   useEffect(() => {
@@ -41,12 +43,6 @@ export const useSearch = ({
         if (signalId === counter.current) setResults(rest);
       });
   }, [term, where, sortBy, limit, offset]);
-
-  useEffect(() => {
-    // @ts-expect-error Comlink can't handle optional params
-    oramaWorker.onLoadProgress();
-    counter.current = -1;
-  }, []);
 
   return results;
 };
