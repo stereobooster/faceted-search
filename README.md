@@ -66,9 +66,7 @@ Maybe...
 
 ### TODO
 
-- build equivalent demo for all 3 approaches
-  - host on Netlify
-  - clean up readme and publish
+- clean up readme and publish
 - write article
   - about faceted search
     - examples with screenshots and links
@@ -162,11 +160,17 @@ Use [Web Workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_A
 
 ### Examples
 
+- https://www.algolia.com/doc/guides/building-search-ui/resources/demos/js/
+- https://www.searchkit.co/demos
+- https://www.reactiveapps.io/
+- https://demo.addsearch.com/search-ui-examples/components/
+- https://react.docs.search.io/search-ui
+- https://coveo.github.io/coveo-search-ui-samples/
+- https://docs.coveo.com/en/atomic/latest/
+- https://docs.coveo.com/en/headless/latest/
 - https://analysis-tools.dev/tools
   - https://github.com/analysis-tools-dev/static-analysis/tree/master/data/tools
 - https://docs.datasette.io/en/stable/facets.html
-- https://software.llnl.gov/
-- https://softwareunderground.github.io/open_geosciene_code_projects_viz/explore/
 
 ### Collection schema
 
