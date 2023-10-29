@@ -1,6 +1,7 @@
-# faceted-search
+# Faceted search experiments
 
-Some experiments with faceted search.
+- Read more about experiment [here](https://stereobooster.com/posts/faceted-search/)
+- Checkout online demo [here](https://faceted.stereobooster.com/)
 
 ## Development
 
@@ -13,12 +14,15 @@ pnpm run dev
 
 ### Tanstack
 
-[source code](src/pages/tanstack/)
+- [source code](src/pages/tanstack/)
+- [demo](https://faceted.stereobooster.com/pages/tanstack/)
 
 ### Orama
 
-[source code](src/pages/orama/)
+- [source code](src/pages/orama/)
+- [demo](https://faceted.stereobooster.com/pages/orama/)
 
 ### ItemsJS
 
-[source code](src/pages/itemsjs/)
+- [source code](src/pages/itemsjs/)
+- [demo](https://faceted.stereobooster.com/pages/itemsjs/)
