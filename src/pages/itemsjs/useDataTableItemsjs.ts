@@ -49,11 +49,6 @@ export const useDataTableItemsjs = <
     [columnFilters]
   );
 
-  const sortBy = useMemo(() => {
-    if (sorting.length === 0) return;
-    return `${sorting[0].id}_${sorting[0].desc ? "desc" : "asc"}`;
-  }, [sorting]);
-
   const term = useMemo(
     () => (columnFilters.find((x) => x.id === "name")?.value as string) || "",
     [columnFilters]
@@ -73,11 +68,16 @@ export const useDataTableItemsjs = <
       itemsjs.search({
         query: term.length < 2 ? "" : term,
         filters: where,
-        sort: sortBy,
+        sort: sorting.length
+          ? {
+              field: sorting[0].id,
+              order: sorting[0].desc ? "desc" : "asc",
+            }
+          : undefined,
         page: pagination.pageIndex + 1,
         per_page: pagination.pageSize,
       }),
-    [term, where, sortBy, pagination.pageSize, pagination.pageIndex, itemsjs]
+    [term, where, sorting, pagination.pageSize, pagination.pageIndex, itemsjs]
   );
 
   const resultRef = useRef(result);
