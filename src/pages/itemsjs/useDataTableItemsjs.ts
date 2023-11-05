@@ -9,7 +9,7 @@ import {
   useReactTable,
   Table,
 } from "@tanstack/react-table";
-import ItemsJS from "itemsjs";
+import ItemsJS from "@stereobooster/itemsjs";
 import {
   defaultVisibilityFilter,
   itemsJsFacets,
@@ -21,7 +21,7 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
 }
 
-export const useDataTableItemsjs = <TData, TValue>({
+export const useDataTableItemsjs = <TData extends Record<string, unknown>, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
@@ -58,7 +58,6 @@ export const useDataTableItemsjs = <TData, TValue>({
 
   const itemsjs = useMemo(
     () =>
-      // @ts-expect-error type signature is wrong
       ItemsJS(data, {
         searchableFields: searchFields,
         aggregations: itemsJsFacets,
@@ -85,7 +84,7 @@ export const useDataTableItemsjs = <TData, TValue>({
     // do nothing
   }
 
-  const dataNew = useMemo(() => result.data.items || [], [result]) as TData[];
+  const dataNew = useMemo(() => result.data.items || [], [result]) as unknown as TData[];
   const count = result?.pagination.total;
   const pageCount =
     count !== undefined ? Math.ceil(count / pagination.pageSize) : -1;
@@ -107,7 +106,7 @@ export const useDataTableItemsjs = <TData, TValue>({
     onColumnVisibilityChange: setColumnVisibility,
     getCoreRowModel: getCoreRowModel(),
     getFacetedUniqueValues:
-      <TData>(_table: Table<TData>, columnId: string) =>
+      <TData>(_table: Table<TData>, columnId: keyof TData & string) =>
       () =>
         new Map(
           // @ts-expect-error xxx
@@ -117,10 +116,10 @@ export const useDataTableItemsjs = <TData, TValue>({
           ])
         ),
     getFacetedMinMaxValues:
-      <TData>(_table: Table<TData>, columnId: string) =>
+      <TData>(_table: Table<TData>, columnId: keyof TData & string) =>
       () => {
         const facet_stats =
-          // @ts-expect-error xxx
+        // @ts-expect-error xxx
           resultRef.current?.data.aggregations[columnId]?.facet_stats;
         // @ts-expect-error xxx
         if (!facet_stats) return [] as [number, number];

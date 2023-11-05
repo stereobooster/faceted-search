@@ -41,6 +41,9 @@ dependencies:
   '@radix-ui/react-slot':
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.15)(react@18.2.0)
+  '@stereobooster/itemsjs':
+    specifier: ^2.1.22
+    version: 2.1.22
   '@tanstack/react-table':
     specifier: ^8.10.7
     version: 8.10.7(react-dom@18.2.0)(react@18.2.0)
@@ -56,9 +59,6 @@ dependencies:
   comlink:
     specifier: ^4.4.1
     version: 4.4.1
-  itemsjs:
-    specifier: ^2.1.22
-    version: 2.1.22
   lucide-react:
     specifier: ^0.289.0
     version: 0.289.0(react@18.2.0)
@@ -73,9 +73,6 @@ dependencies:
     version: 3.22.4
 
 devDependencies:
-  '@types/itemsjs':
-    specifier: ^2.1.5
-    version: 2.1.5
   '@types/node':
     specifier: ^20.8.6
     version: 20.8.6
@@ -1651,6 +1648,15 @@ packages:
       '@babel/runtime': 7.23.2
     dev: false
 
+  /@stereobooster/itemsjs@2.1.22:
+    resolution: {integrity: sha512-v1KTycIdO4TD3hN+loIqZ011XS2a86uq2UjmVlM4GwT8IZUx5EVI7VGXxDQhyAlqLqpcSdQzIGb5coQXB/qexA==}
+    dependencies:
+      boolean-parser: 0.0.2
+      fastbitset: 0.4.1
+      lodash-es: 4.17.21
+      lunr: 1.0.0
+    dev: false
+
   /@tanstack/react-table@8.10.7(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-bXhjA7xsTcsW8JPTTYlUg/FuBpn8MNjiEPhkNhIGCUR6iRQM2+WEco4OBpvDeVcR9SE+bmWLzdfiY7bCbCSVuA==}
     engines: {node: '>=12'}
@@ -1667,10 +1673,6 @@ packages:
     resolution: {integrity: sha512-KQk5OMg5OH6rmbHZxuNROvdI+hKDIUxANaHlV+dPlNN7ED3qYQ/WkpY2qlXww1SIdeMlkIhpN/2L00rof0fXFw==}
     engines: {node: '>=12'}
     dev: false
-
-  /@types/itemsjs@2.1.5:
-    resolution: {integrity: sha512-iLrOHoBw5UcmCYoyJrpngkeDNY4VW59sHp1pVCImSIrJlQN+a+Zy+s5Gil5Xp+mQWAbtnxs4J8Wv3ddjv9gRmQ==}
-    dev: true
 
   /@types/json-schema@7.0.14:
     resolution: {integrity: sha512-U3PUjAudAdJBeC2pgN8uTIKgxrb4nlDF3SF0++EldXQvQBGkpFZMSnwQiIoDU77tv45VgNkl/L4ouD+rEomujw==}
@@ -2607,15 +2609,6 @@ packages:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
-  /itemsjs@2.1.22:
-    resolution: {integrity: sha512-aWoVfLFK2j38Sb0NUBN64hEDRndf54eXHrM2tc3c8Yq5dz5XJgTN/eSPHpbEiWbs1JbYjRNOWuzH6cQpG9QtQw==}
-    dependencies:
-      boolean-parser: 0.0.2
-      fastbitset: 0.4.1
-      lodash: 4.17.21
-      lunr: 1.0.0
-    dev: false
-
   /jiti@1.20.0:
     resolution: {integrity: sha512-3TV69ZbrvV6U5DfQimop50jE9Dl6J8O1ja1dvBbMba/sZ3YBEQqJ2VZRoQPVnhlzjNtU1vaXRZVrVjU4qtm8yA==}
     hasBin: true
@@ -2685,13 +2678,13 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
-
-  /lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-    dev: false
 
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}

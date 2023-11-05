@@ -44,6 +44,7 @@ export function FacetedFilterCheckboxes<TData, TValue>({
             return (
               <CommandItem
                 key={option}
+                disabled={count === 0 && !isSelected}
                 onSelect={() => {
                   if (isSelected) {
                     selectedValues.delete(option);
