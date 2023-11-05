@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Table as TableType } from "@tanstack/react-table";
 import { FacetedFilterCheckboxes } from "./FacetedFilterCheckboxes";
 import { FacetedFilterSlider } from "./FacetedFilterSlider";
+import { useEffect, useState } from "react";
 
 interface SidebarProps<TData> {
   className?: string;
@@ -10,7 +11,12 @@ interface SidebarProps<TData> {
 }
 
 export function Sidebar<TData>({ className, table }: SidebarProps<TData>) {
+  const [loaded, setLoaded] = useState(false);
   const length = table.getRowModel().rows.length;
+  useEffect(() => {
+    if (length > 0) setLoaded(true)
+  }, [length]);
+
   return (
     <div className={cn("pb-12", className)}>
       <div className="space-y-4 py-4">
@@ -20,7 +26,7 @@ export function Sidebar<TData>({ className, table }: SidebarProps<TData>) {
               Price
             </h2>
             <div className="space-y-1">
-              {length !== 0 && (
+              {loaded && (
                 <FacetedFilterSlider
                   column={table.getColumn("salePrice")}
                   title="Price"
@@ -35,7 +41,7 @@ export function Sidebar<TData>({ className, table }: SidebarProps<TData>) {
               Manufacturer
             </h2>
             <div className="space-y-1">
-              {length !== 0 && (
+              {loaded && (
                 <FacetedFilterCheckboxes
                   column={table.getColumn("manufacturer")}
                   title="Manufacturer"
@@ -50,7 +56,7 @@ export function Sidebar<TData>({ className, table }: SidebarProps<TData>) {
               Type
             </h2>
             <div className="space-y-1">
-              {length !== 0 && (
+              {loaded && (
                 <FacetedFilterCheckboxes
                   column={table.getColumn("type")}
                   title="Type"
