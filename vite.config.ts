@@ -1,7 +1,7 @@
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
- 
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
 export default defineConfig({
   plugins: [react()],
   resolve: {
@@ -12,11 +12,12 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: path.resolve(__dirname, 'index.html'),
-        tanstack: path.resolve(__dirname, 'pages/tanstack/index.html'),
-        itemsjs: path.resolve(__dirname, 'pages/itemsjs/index.html'),
-        orama: path.resolve(__dirname, 'pages/orama/index.html'),
-      }
+        main: path.resolve(__dirname, "index.html"),
+        facets: path.resolve(__dirname, "pages/facets/index.html"),
+        tanstack: path.resolve(__dirname, "pages/tanstack/index.html"),
+        itemsjs: path.resolve(__dirname, "pages/itemsjs/index.html"),
+        orama: path.resolve(__dirname, "pages/orama/index.html"),
+      },
     },
   },
-})
+});
