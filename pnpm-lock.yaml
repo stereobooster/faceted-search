@@ -79,6 +79,9 @@ dependencies:
     version: 3.22.4
 
 devDependencies:
+  '@types/fastbitset':
+    specifier: ^0.2.2
+    version: 0.2.2
   '@types/node':
     specifier: ^20.8.6
     version: 20.8.6
@@ -1696,6 +1699,10 @@ packages:
     resolution: {integrity: sha512-KQk5OMg5OH6rmbHZxuNROvdI+hKDIUxANaHlV+dPlNN7ED3qYQ/WkpY2qlXww1SIdeMlkIhpN/2L00rof0fXFw==}
     engines: {node: '>=12'}
     dev: false
+
+  /@types/fastbitset@0.2.2:
+    resolution: {integrity: sha512-TmMNnC1Zsp7omUE088sPmuSytpz8mlW2kYugbV/Pm3zeZ6/KqIckNn9q8md5p3swBBKMrcwhlNRI2qMBZ8TSgg==}
+    dev: true
 
   /@types/json-schema@7.0.14:
     resolution: {integrity: sha512-U3PUjAudAdJBeC2pgN8uTIKgxrb4nlDF3SF0++EldXQvQBGkpFZMSnwQiIoDU77tv45VgNkl/L4ouD+rEomujw==}
