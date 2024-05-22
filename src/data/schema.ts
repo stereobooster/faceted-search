@@ -96,6 +96,7 @@ export const facetsSchema = {
   categories: {
     type: "string",
     facet: true,
+    isArray: true,
   },
 } satisfies Schema;
 
