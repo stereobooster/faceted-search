@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Schema } from "@stereobooster/facets";
 
 export const productSchema = z.object({
   name: z.string(),
@@ -66,6 +67,37 @@ export const itemsJsFacets = {
     show_facet_stats: true,
   },
 };
+
+export const facetsSchema = {
+  name: {
+    type: "string",
+    text: true,
+  },
+  shortDescription: {
+    type: "string",
+    text: true,
+  },
+  salePrice: {
+    type: "number",
+    facet: true,
+  },
+  bestSellingRank: {
+    type: "number",
+    facet: true,
+  },
+  manufacturer: {
+    type: "string",
+    facet: true,
+  },
+  type: {
+    type: "string",
+    facet: true,
+  },
+  categories: {
+    type: "string",
+    facet: true,
+  },
+} satisfies Schema;
 
 export const oramaFacets = {
   manufacturer: {},

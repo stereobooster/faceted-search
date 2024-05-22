@@ -10,6 +10,21 @@ export default function App() {
         </CardHeader>
         <CardContent>
           <p>
+            <a href="/pages/facets/" className="underline">
+              Facets
+            </a>
+          </p>
+          <p className="text-sm text-muted-foreground">
+            Tanstack table with{" "}
+            <a
+              href="https://github.com/stereobooster/facets"
+              className="underline"
+            >
+              Facets for faceting
+            </a>
+          </p>
+          <Separator className="my-2" />
+          <p>
             <a href="/pages/tanstack/" className="underline">
               Tanstack
             </a>
