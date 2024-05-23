@@ -42,8 +42,8 @@ dependencies:
     specifier: ^1.0.2
     version: 1.0.2(@types/react@18.2.15)(react@18.2.0)
   '@stereobooster/facets':
-    specifier: ^0.1.0
-    version: 0.1.0(@orama/orama@2.0.0-beta.1)(flexsearch@0.7.43)(fuse.js@7.0.0)(minisearch@6.3.0)(quick-score@0.2.0)
+    specifier: ^0.1.1
+    version: 0.1.1(@orama/orama@2.0.0-beta.1)(flexsearch@0.7.43)(fuse.js@7.0.0)(minisearch@6.3.0)(quick-score@0.2.0)
   '@stereobooster/itemsjs':
     specifier: ^2.1.22
     version: 2.1.22
@@ -1657,8 +1657,8 @@ packages:
       '@babel/runtime': 7.23.2
     dev: false
 
-  /@stereobooster/facets@0.1.0(@orama/orama@2.0.0-beta.1)(flexsearch@0.7.43)(fuse.js@7.0.0)(minisearch@6.3.0)(quick-score@0.2.0):
-    resolution: {integrity: sha512-+FEuyEsrXQYafloBqopypJfAR5QhHs6HkxK4MSECk2lRJrKvm0of2xWotkT67EGzcl9HiL9JEGNnn8gI/HQ/lA==}
+  /@stereobooster/facets@0.1.1(@orama/orama@2.0.0-beta.1)(flexsearch@0.7.43)(fuse.js@7.0.0)(minisearch@6.3.0)(quick-score@0.2.0):
+    resolution: {integrity: sha512-KX8WlzUZOGXgFAgfjI24HQcTW9MRzdcoYc48QVbiD3IZApDkjSDVG/IxnS5LOLFGRM+APMvJy79mPC2FEdnFhQ==}
     peerDependencies:
       '@orama/orama': ^2.0.0-beta.4
       flexsearch: ^0.7.31
